@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Student implements Comparable<Student> {
     private String name;
     private double gpa;
@@ -5,7 +7,9 @@ public class Student implements Comparable<Student> {
 
     // TODO: Task 1 — Создай конструктор, который принимает имя, GPA и возраст
     public Student(String name, double gpa, int age) {
-        // заглушка
+        this.name = name;
+        this.gpa = gpa;
+        this.age = age;
     }
 
     public String getName() { return name; }
@@ -14,19 +18,27 @@ public class Student implements Comparable<Student> {
 
     // TODO: Task 1 — Добавь возможность изменить GPA
     public void setGpa(double newGpa) {
-        // заглушка
+        this.gpa = newGpa;
     }
 
     // TODO: Task 1 (Sorting) — Реализуй Comparable по GPA (по возрастанию)
     @Override
     public int compareTo(Student other) {
-        // заглушка — верни правильное значение сравнения
-        return 0;
+        return Double.compare(this.getGpa(), other.getGpa());
     }
 
     @Override
     public String toString() {
         // TODO: Сделай красивый вывод
-        return "";
+        return "Student\n1) name: "+getName()+ "\n2) age: "+ getAge()+ "\n3) GPA: "+ getGpa()+ "\n";
     }
+
+//    public static final Comparator<Student> nameComporator = new Comparator<Student>() {
+//        @Override
+//        public int compare(Student o1, Student o2) {
+//            return o1.getName().compareTo(o2.getName());
+//        }
+//    };
+//    Can be written like this , I didn't know which one is better :)
+//    left the first one that I came up with.
 }
